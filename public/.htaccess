@@ -1,0 +1,146 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+##################################
+# SSL set
+# RewriteEngine On
+# RewriteCond %{SERVER_PORT} 80
+# RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$
+# RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
+# RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/(?:\ Ballot169)?
+# RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+# RewriteRule ^(.*)$ https://gilasweb.ir [R,L]
+
+# RewriteEngine On
+# RewriteCond %{HTTPS} !=on
+# RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$
+# RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
+# RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/(?:\ Ballot169)?
+# RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# RewriteEngine On
+# RewriteCond %{HTTP_HOST} ^gilasweb\.ir [NC]
+# RewriteCond %{SERVER_PORT} 80
+# RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$
+# RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
+# RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/(?:\ Ballot169)?
+# RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+# #RewriteRule ^(.*)$ https://www.gilasweb.ir/$1 [R,L]
+
+##################################
+# START FILES DONT ACCESS
+<files ".htaccess">
+order allow,deny
+deny from all
+</files>
+
+<files "wp-config.php">
+order allow,deny
+deny from all
+</files>
+
+<files ~ "\.web">
+order allow,deny
+deny from all
+</files>
+
+<files ~ "\.xps">
+order allow,deny
+deny from all
+</files>
+
+<files ~ "\.txt">
+order allow,deny
+deny from all
+</files>
+
+<files ~ "\.xls">
+order allow,deny
+deny from all
+</files>
+
+<files ~ "\.xlsx">
+order allow,deny
+deny from all
+</files>
+
+<files ~ "\.XLS">
+order allow,deny
+deny from all
+</files>
+
+<files ~ "\.XLSX">
+order allow,deny
+deny from all
+</files>
+
+<files ~ "\.html">
+order allow,deny
+deny from all
+</files>
+
+<files ~ "\.doc">
+order allow,deny
+deny from all
+</files>
+
+<files ~ "\.docx">
+order allow,deny
+deny from all
+</files>
+
+<files ~ "\.DOC">
+order allow,deny
+deny from all
+</files>
+
+<files ~ "\.DOCX">
+order allow,deny
+deny from all
+</files>
+
+<files ~ "\.zip">
+order allow,deny
+deny from all
+</files>
+
+<files ~ "\.ZIP">
+order allow,deny
+deny from all
+</files>
+
+<files ~ "\.rar">
+order allow,deny
+deny from all
+</files>
+
+<files ~ "\.RAR">
+order allow,deny
+deny from all
+</files>
+
+<files "cdb.php" >
+order allow,deny
+deny from all
+</files>
+# END  FILES DONT ACCESS
