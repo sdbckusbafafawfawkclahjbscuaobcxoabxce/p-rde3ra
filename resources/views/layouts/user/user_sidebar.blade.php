@@ -27,12 +27,20 @@
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         {{ csrf_field() }}
     </form>
-        <div class=" text-center ">
-            موجودی/امتیاز
-            <span class="h2">{{Auth::user()->credit}}</span>
+        <div class="pt-1 text-center ">
+           پلن کاربر:
+            <span class="h3">{{Auth::user()->credit}}</span>
             <hr class="bg-light">
         </div>
         <ul class="nav flex-column  pr-0 mr-0">
+            @if(Auth::user()->coabout != NULL)
+                <li class="nav-item  btn">
+                    <a class="text-light nav-link d-flex" href="{{route('userpage',[Auth::user()->id])}}">
+                        <i class="pl-1 fas fa-angle-left"></i>
+                        مشاهده صفحه
+                    </a>
+                </li>
+            @endif
             @if(admin_access(['09163151967','09161145220'],Auth::user()->status,Auth::user()->phone,null))
             <li class="nav-item  btn">
                 <a class="text-light nav-link d-flex" href="/admin">
@@ -41,20 +49,36 @@
                 </a>
             </li>
             @endif
-            @if(Auth::user()->coabout != NULL)
-            <li class="nav-item  btn">
-                <a class="text-light nav-link d-flex" href="{{route('userpage',[Auth::user()->id])}}">
-                    <i class="pl-1 fas fa-angle-left"></i>
-                    مشاهده صفحه
-                </a>
-            </li>
-            @endif
+                <li class="nav-item  btn">
+                    <a class="text-light nav-link d-flex" href="#">
+                        <i class="pl-1 fas fa-angle-left"></i>
+                        مدیریت آگهی کالا
+                    </a>
+                </li>
+                <li class="nav-item  btn">
+                    <a class="text-light nav-link d-flex" href="#">
+                        <i class="pl-1 fas fa-angle-left"></i>
+                        خرید طرح تبلیغات
+                    </a>
+                </li>
+                <li class="nav-item  btn">
+                    <a class="text-light nav-link d-flex" href="{{route('show_user_information')}}">
+                        <i class="pl-1 fas fa-angle-left"></i>
+                        آپلود تصویر و نماوا
+                    </a>
+                </li>
             <li class="nav-item  btn">
                 <a class="text-light nav-link d-flex" href="{{route('show_user_information')}}">
                     <i class="pl-1 fas fa-angle-left"></i>
                     اطلاعات حساب
                 </a>
             </li>
+                <li class="nav-item  btn">
+                    <a class="text-light nav-link d-flex" href="#">
+                        <i class="pl-1 fas fa-angle-left"></i>
+                        ساعات کاری
+                    </a>
+                </li>
             <li class="nav-item  btn">
                 <a class="text-light mb-2 nav-link d-flex" href="{{route('show_user_changepassword')}}">
                     <i class="pl-1 fas fa-angle-left"></i>

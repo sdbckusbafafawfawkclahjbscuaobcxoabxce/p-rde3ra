@@ -42,7 +42,7 @@ if (!isset($_SERVER['HTTPS'])) {
     <link href="{{ asset('defaultassets/css/bootstrap.min.css') }}" rel="stylesheet">
 </head>
 <body>
-<div class="container-fluid text-right IRANSans " dir="rtl">
+<div class=" bgpa container-fluid text-right IRANSans " dir="rtl">
         <div class="row d-flex justify-content-center">
         <div class="col-md-10 my-4">
         <div class="row persianumber">
@@ -64,6 +64,7 @@ if (!isset($_SERVER['HTTPS'])) {
             </div>
         </div>
     </div>
+<img class="d-none d-md-block fixed-bottom bgpb imgbg" src="/themeassets/pardesara/img/footer.png"/>
 <!-- Scripts -->
 <script src="{{ asset('defaultassets/js/jquery-3.2.1.min.js') }}"></script>
 <script src="{{ asset('defaultassets/js/bootstrap.min.js') }}"></script>
@@ -80,6 +81,7 @@ if (!isset($_SERVER['HTTPS'])) {
         myWindow.print();
     }
 </script>
+
 </body>
 </html>
 

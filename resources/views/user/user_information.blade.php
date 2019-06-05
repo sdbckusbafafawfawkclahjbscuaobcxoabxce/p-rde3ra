@@ -31,34 +31,17 @@
                     </div>
 
 <div class="col-sm-4">
-                    <label for="name" class="control-label">نام و نام خانوادگی:</label>
+                    <label for="name" class="control-label">نام و نام خانوادگی مدیر:</label>
                     <input placeholder="نام و نام خانوادگی" id="name" type="text" class="mb-2 form-control" name="name" value="{{ Auth::user()->name }}"
                            required autofocus>
                     @if ($errors->has('name'))
                         <span class="text-danger mt-2 mb-0 d-block">{{ $errors->first('name') }}</span>
                     @endif
 </div>
-<div class="col-sm-4">
-                    <label for="phone" class="control-label">تلفن همراه:</label>
-                    <input placeholder="تلفن همراه" id="phone" type="number" maxlength="11" class="mb-2 hiddennumberarrow form-control"
-                           name="phone" value="{{ Auth::user()->phone }}"
-                           required>
-                    @if ($errors->has('phone'))
-                        <span class="text-danger mt-2 mb-0 d-block">{{ $errors->first('phone') }}</span>
-                    @endif
-</div>
-<div class="col-sm-4">
-                    <label for="email" class="control-label">آدرس ایمیل:</label>
-                    <input placeholder="آدرس ایمیل" id="email" type="email" class="mb-2 form-control" name="email" value="{{ Auth::user()->email }}"
-                           required>
 
-                    @if ($errors->has('email'))
-                        <span class="text-danger mt-2 mb-0 d-block">{{ $errors->first('email') }}</span>
-                    @endif
-</div>
                     <div class="col-sm-4">
-                        <label for="coname" class="control-label">نام شرکت:</label>
-                        <input placeholder="نام شرکت" id="email" type="text" class="mb-2 form-control" name="coname" value="{{ Auth::user()->coname }}"
+                        <label for="coname" class="control-label">نام فروشگاه:</label>
+                        <input placeholder="نام فروشگاه" id="email" type="text" class="mb-2 form-control" name="coname" value="{{ Auth::user()->coname }}"
                                required>
 
                         @if ($errors->has('coname'))
@@ -69,33 +52,90 @@
                         <label for="cocat" class="control-label">حوزه فعالیت:</label>
                         <input placeholder="حوزه فعایت" id="cocat" type="text" class="mb-2 form-control" name="cocat" value="{{ Auth::user()->cocat }}"
                                required>
-
                         @if ($errors->has('cocat'))
                             <span class="text-danger mt-2 mb-0 d-block">{{ $errors->first('cocat') }}</span>
                         @endif
                     </div>
                     <div class="col-sm-4">
-                        <label for="cocrative" class="control-label">دانش بنیان:</label>
-                        <select class="form-control" name="cocrative">
-                            @if(Auth::user()->cocrative != null)
-                            <option value="{{ Auth::user()->cocrative }}">{{ Auth::user()->cocrative }}</option>
-                            @endif
-                            <option value="{{null}}">خیر</option>
-                            <option value="خلاق">خلاق</option>
-                            <option value="دانش بنیان">دانش بنیان</option>
-                                <option value="دانش بنیان و خلاق"> دانش بنیان و خلاق</option>
-                        </select>
+                        <label for="phone" class="control-label">تلفن همراه:</label>
+                        <input placeholder="تلفن همراه" id="phone" type="number" maxlength="11" class="mb-2 hiddennumberarrow form-control"
+                               name="phone" value="{{ Auth::user()->phone }}"
+                               required>
+                        @if ($errors->has('phone'))
+                            <span class="text-danger mt-2 mb-0 d-block">{{ $errors->first('phone') }}</span>
+                        @endif
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="email" class="control-label">آدرس ایمیل:</label>
+                        <input placeholder="آدرس ایمیل" id="email" type="email" class="mb-2 form-control" name="email" value="{{ Auth::user()->email }}"
+                               required>
 
-                        @if ($errors->has('cocrative'))
-                            <span class="text-danger mt-2 mb-0 d-block">{{ $errors->first('crative') }}</span>
+                        @if ($errors->has('email'))
+                            <span class="text-danger mt-2 mb-0 d-block">{{ $errors->first('email') }}</span>
+                        @endif
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="cocat" class="control-label">شماره تلفن:</label>
+                        <input placeholder="شماره تلفن" id="cocat" type="text" class="mb-2 form-control" name="cocat" value="{{ Auth::user()->cocat }}"
+                               required>
+                        @if ($errors->has('cocat'))
+                            <span class="text-danger mt-2 mb-0 d-block">{{ $errors->first('cocat') }}</span>
+                        @endif
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="cocat" class="control-label">آیدی/شماره  تلگرام:</label>
+                        <input placeholder="آیدی/شماره  تلگرام" id="cocat" type="text" class="mb-2 form-control" name="cocat" value="{{ Auth::user()->cocat }}"
+                               required>
+                        @if ($errors->has('cocat'))
+                            <span class="text-danger mt-2 mb-0 d-block">{{ $errors->first('cocat') }}</span>
+                        @endif
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="cocat" class="control-label">شماره واتس اپ:</label>
+                        <input placeholder="شماره واتس اپ" id="cocat" type="text" class="mb-2 form-control" name="cocat" value="{{ Auth::user()->cocat }}"
+                               required>
+                        @if ($errors->has('cocat'))
+                            <span class="text-danger mt-2 mb-0 d-block">{{ $errors->first('cocat') }}</span>
+                        @endif
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="cocat" class="control-label">آیدی اینستاگرام:</label>
+                        <input placeholder="آیدی اینستاگرام" id="cocat" type="text" class="mb-2 form-control" name="cocat" value="{{ Auth::user()->cocat }}"
+                               required>
+                        @if ($errors->has('cocat'))
+                            <span class="text-danger mt-2 mb-0 d-block">{{ $errors->first('cocat') }}</span>
+                        @endif
+                    </div>
+                    <div class="col-sm-12">
+                        <label for="cocat" class="control-label">آدرس:</label>
+                        <input placeholder="آدرس" id="cocat" type="text" class="mb-2 form-control" name="cocat" value="{{ Auth::user()->cocat }}"
+                               required>
+                        @if ($errors->has('cocat'))
+                            <span class="text-danger mt-2 mb-0 d-block">{{ $errors->first('cocat') }}</span>
+                        @endif
+                    </div>
+                    <div class="col-sm-12">
+                        <label for="cocat" class="control-label"> کد ضمیمه گوگل مپ:<a target="_blank" href="https://www.google.com/maps"> (Share or embed map از اینجا بگیرید)</a> </label>
+                        <input placeholder="کد ضمیمه گوگل مپ" id="cocat" type="text" class="mb-2 form-control" name="cocat" value="{{ Auth::user()->cocat }}"
+                               required>
+                        @if ($errors->has('cocat'))
+                            <span class="text-danger mt-2 mb-0 d-block">{{ $errors->first('cocat') }}</span>
+                        @endif
+                    </div>
+                    <div class="col-sm-12 pb-4">
+                        <label for="cocat" class="control-label">درباره فروشگاه یا خدمات:</label>
+                        <textarea class="form-control" rows="5"></textarea>
+                        @if ($errors->has('cocat'))
+                            <span class="text-danger mt-2 mb-0 d-block">{{ $errors->first('cocat') }}</span>
                         @endif
                     </div>
 
-                    <div class="col-sm-12">
+                    <br>
+                   <!--<div class="d-none col-sm-12">
                         <label for="coabout">درباره شرکت(حداقل 3 سطر)</label>
                         <input value="{{Auth::user()->coabout}}" id="coabout"
-                               name="coabout" dir="rtl">
-                    </div>
+                                dir="rtl">
+                    </div>-->
                     <div class="col-sm-12 border-top ">
                     <div class="row d-flex justify-content-center mt-2">
                     <div class="col-sm-4">
@@ -108,10 +148,14 @@
             </div>
         </div>
     </main>
+    <? /*
+
+
+
     {{--editor--}}
     <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
     {{--/editor license remover--}}
-    <script>
+    <script class="d-none">
         tinymce.init({
             selector: '#coabout',
             //force_br_newlines : true,
@@ -165,4 +209,5 @@
             }
         });
     </script>
+ */?>
 @endsection

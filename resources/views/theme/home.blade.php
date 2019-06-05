@@ -9,7 +9,32 @@
     <!-- Start main content -->
     <div class="main flex-column w-100 m-0 d-flex justify-content-center">
         <div class="login-regester d-flex row-reverse justify-content-end">
-            <a href="/login">ورود / ثبت نام</a>
+                             <span class="GilasUserSet px-4 text-center">
+                    @if(Auth::check())
+                                     <button>
+                            خوش آمدید
+                                         @if(Auth::user()->name != 'none')
+                                             <strong>{{ Auth::user()->name }}</strong>
+                                         @else
+                                             <strong>{{ 'کاربر' }}</strong>
+                                         @endif
+                                         <i class="ion-arrow-down-b"></i>
+                        </button>
+                                     <div class="list text-center">
+                            <a class="text-center" href="/user">پنل کاربری</a>
+                            <a class="text-center" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                خروج
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                  style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </div>
+                                 @else
+                                     <a class="btn btn-brandColor" href="/login">ورود / عضویت</a>
+                                 @endif
+                </span>
         </div>
         <div class="d-flex flex-column justify-content-center align-items-center m-5">
             <div class="logo flex-column d-flex justify-content-center align-items-center">
@@ -513,7 +538,6 @@
             <h2>با ثبت خدمات خود در پرده سرا به صورت انلاین سفارش بگیرید</h2>
             <a href="/login" class="btn-insert-ad btn text-light text-center py-3">ثبت آگهی<img src="/themeassets/pardesara/img/plus.png" alt="plus"></a>
         </div>
-
     </div>
     <!-- End Insert ad -->
 @endsection

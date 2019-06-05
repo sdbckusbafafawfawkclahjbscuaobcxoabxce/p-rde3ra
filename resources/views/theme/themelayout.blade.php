@@ -80,9 +80,12 @@
             <a class="m-3" href="#">سوالات متداول</a>
         </div>
         <div class="mx-sm-3 about d-flex flex-column justify-content-center align-items-center">
-            <h4 class="m-3">حس خوب سفارش و تحویل آنلاین پرده</h4>
+            <h1 class="h4 m-3">{{$generalinfo[0]->value}}</h1>
             <p class="m-3">
-                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
+                {{$generalinfo[1]->value}}
+                <br>
+                کلمات کلیدی:
+                {{$generalinfo[2]->value}}
             </p>
         </div>
         <div class="mx-sm-3 symbol">
@@ -90,9 +93,11 @@
                 <a class="m-2" href="#"><img width="300px" src="/themeassets/pardesara/img/nemad.png" alt="nemad"></a>
             </div>
             <div class="symbol-icon d-flex flex-row justify-content-center align-items-center">
-                <div class="d-flex justify-content-center align-items-center m-2"><a href="#"><img src="/themeassets/pardesara/img/facebook.png" alt="facebook"></a></div>
-                <div class="d-flex justify-content-center align-items-center m-2"><a href="#"><span></span><img src="/themeassets/pardesara/img/twitter.png" alt="twitter"></a></div>
-                <div class="d-flex justify-content-center align-items-center m-2"><a href="#"><span></span><img src="/themeassets/pardesara/img/instagram.png" alt="instagram"></a></div>
+                @if(strlen($generalinfo[17]->value) >2) <div class="d-flex justify-content-center align-items-center m-2"><a class="text-md pt-3 btn text-primary" href="{{$generalinfo[17]->value}}"><i class="fab fa-linkedin-in"></i></a></div> @endif
+                @if(strlen($generalinfo[15]->value) >2) <div class="d-flex justify-content-center align-items-center m-2"><a class="text-md pt-3 btn text-primary" href="{{$generalinfo[15]->value}}"><i class="fab fa-instagram"></i></a></div> @endif
+                @if(strlen($generalinfo[12]->value) >2)  <div class="d-flex justify-content-center align-items-center m-2"><a class="text-md pt-3 btn text-primary" href="{{$generalinfo[12]->value}}"><i class="fab fa-twitter"></i></a></div> @endif
+                @if(strlen($generalinfo[11]->value) >2) <div class="d-flex justify-content-center align-items-center m-2"><a class="text-md pt-3 btn text-primary" href="{{$generalinfo[11]->value}}"><i class="fab fa-facebook"></i></a></div> @endif
+                @if(strlen($generalinfo[16]->value) >2) <div class="d-flex justify-content-center align-items-center m-2"><a class="text-md pt-3 btn text-primary" href="{{$generalinfo[16]->value}}"><i class="fab fa-telegram-plane"></i></a></div> @endif
             </div>
         </div>
     </div>

@@ -113,12 +113,12 @@
                                                 <td><input dir="ltr" class="form-control" type="text" name="g12"
                                                            value="{{$generalinfo[12]->value}}"></td>
                                             </tr>
-                                            <tr>
+                                            <tr class="d-none">
                                                 <td class="bg-{{$rand_color}} w-25 text-light text-center"> آدرس کانال آپارات</td>
                                                 <td><input dir="ltr" class="form-control" type="text" name="g13"
                                                            value="{{$generalinfo[13]->value}}"></td>
                                             </tr>
-                                            <tr>
+                                            <tr class="d-none">
                                                 <td class="bg-{{$rand_color}} w-25 text-light text-center"> آدرس کانال سروش</td>
                                                 <td><input dir="ltr" class="form-control" type="text" name="g14"
                                                            value="{{$generalinfo[14]->value}}"></td>

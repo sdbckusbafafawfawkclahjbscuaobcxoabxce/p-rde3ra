@@ -5,7 +5,7 @@
 * Time: 4:00 AM
 */ --}}
 
-@if(admin_access(Auth::user()->status,Auth::user()->phone))
+@if(admin_access(['09163151967','09161145220'],Auth::user()->status,Auth::user()->phone))
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
