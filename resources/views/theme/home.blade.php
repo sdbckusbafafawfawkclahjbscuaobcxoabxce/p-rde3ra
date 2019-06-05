@@ -6,263 +6,514 @@
 */ --}}
 @extends('theme.themelayout')
 @section('content')
-    <div class="container-fluid">
+    <!-- Start main content -->
+    <div class="main flex-column w-100 m-0 d-flex justify-content-center">
+        <div class="login-regester d-flex row-reverse justify-content-end">
+            <a href="/login">ورود / ثبت نام</a>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center m-5">
+            <div class="logo flex-column d-flex justify-content-center align-items-center">
+                <img src="/themeassets/pardesara/img/logo.png" alt="logo">
+                <p>
+                    برای مشاهده خدمات، شهر و محل خود را انتخاب کنید
+                </p>
+            </div>
+            <div class="input-group-search d-flex flex-wrap-reverse">
+                <button type="button" class="btn-search">مشاهده آگهی</button>
+                <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
 
-        @if(isset($allbanner) && count($allbanner))
-        <div class="row">
-            <div class="w-100" style="height:72vh; overflow: hidden" dir="rtl">
-                <div class="bd-example">
-                    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner bootslider">
-                            @php $activeclass="active"; @endphp
-                            @foreach($allbanner as $singlebanner)
-                            @if($singlebanner->father == "lg_slider")
-                            <div class="carousel-item {{$activeclass}}">
-                                <img src="{{$singlebanner->imgpath}}" class="d-block w-100" alt="{{$singlebanner->title}}" >
-                                <div class="carousel-caption d-none d-md-block ">
-                                    <h1 class="candyclass">{{$singlebanner->title}}</h1>
-                                    <p class="d-none p-4 h3 candyclass">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
-                                </div>
-                                <div class="carousel-caption-xs d-block d-md-none">
-                                    <h4 class="d-block d-md-none candyclass" style="line-height: 50px">{{$singlebanner->title}}</h4>
-                                    <p class="d-none p-4 h3 candyclass">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
-                                </div>
-                            </div>
-                            @endif
-                            <?php $activeclass="";?>
-                            @endforeach
+                <div class="input-group">
+                    <select class="custom-select city text-right" id="inputGroupSelect01" dir="rtl">
+                        <option value="
+ تهران
+">
+                            تهران
+                        </option>
+                        <option value="
+ خوزستان
+">
+                            خوزستان
+                        </option>
+                        <option value="
+ آذربایجان شرقی
+">
+                            آذربایجان شرقی
+                        </option>
+                        <option value="
+   آذربایجان غربی
+">
+                            آذربایجان غربی
+                        </option>
+                        <option value="
+     اردبیل
+">
+                            اردبیل
+                        </option>
+                        <option value="
+   اصفهان
+">
+                            اصفهان
+                        </option>
+                        <option value="
+ البرز
+">
+                            البرز
+                        </option>
 
+                        <option value="
+    ایلام
+">
+                            ایلام
+                        </option>
+                        <option value="
+بوشهر
+">
+                            بوشهر
+                        </option>
+                        <option value="
+  چهارمحال و بختیاری
+">
+                            چهارمحال و بختیاری
+                        </option>
+                        <option value="
+    خراسان جنوبی
+">
+                            خراسان جنوبی
+                        </option>
+                        <option value="
+ خراسان رضوی
+">
+                            خراسان رضوی
+                        </option>
+                        <option value="
+  خراسان شمالی
+">
+                            خراسان شمالی
+                        </option>
+
+                        <option value="
+   زنجان
+">
+                            زنجان
+                        </option>
+                        <option value="
+     سمنان
+">
+                            سمنان
+                        </option>
+                        <option value="
+  سیستان و بلوچستان
+">
+                            سیستان و بلوچستان
+                        </option>
+                        <option value="
+  فارس
+">
+                            فارس
+                        </option>
+                        <option value="
+  قزوین
+">
+                            قزوین
+                        </option>
+
+                        <option value="
+  قم
+">
+                            قم
+                        </option>
+
+                        <option value="
+     کردستان
+">
+                            کردستان
+                        </option>
+
+                        <option value="
+   کرمان
+">
+                            کرمان
+                        </option>
+
+                        <option value="
+  کرمانشاه
+">
+                            کرمانشاه
+                        </option>
+
+                        <option value="
+  کهگیلویه و بویراحمد
+">
+                            کهگیلویه و بویراحمد
+                        </option>
+
+                        <option value="
+     گلستان
+">
+                            گلستان
+                        </option>
+
+                        <option value="
+    گیلان
+">
+                            گیلان
+                        </option>
+
+                        <option value="
+     لرستان
+">
+                            لرستان
+                        </option>
+
+                        <option value="
+      مازندران
+">
+                            مازندران
+                        </option>
+
+                        <option value="
+    مرکزی
+">
+                            مرکزی
+                        </option>
+
+                        <option value="
+  هرمزگان
+">
+                            هرمزگان
+                        </option>
+
+                        <option value="
+  همدان یزد
+">
+                            همدان یزد
+                        </option>
+
+                        <option value="
+ یزد
+">
+                            یزد
+                        </option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="Services d-flex flex-column justify-content-center align-items-center">
+                <p>
+                    خدمات<span>پرده</span>در دسته بندی مشخص
+                </p>
+                <div class="d-flex flex-row flex-wrap  justify-content-center align-items-center">
+                    <div class="services-icon-hover d-flex flex-column justify-content-center align-items-center m-4">
+                        <div class="services-icon">
+                            <img src="/themeassets/pardesara/img/curtain.png" alt="Services-curtain">
                         </div>
-                        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
+                        <span class="icon-hover"></span>
+                        <p class="mt-2">پرده سراها</p>
                     </div>
-                </div>
-            </div>
-        </div>
-        @endif
-
-        <div class="row  sin2">
-        </div>
-    </div>
-    <div class="container">
-        <div class="row my-5">
-            <div class="text-center col-md-12 IRANSans text-right">
-                <p class="h5">چرا ما متمایز هستیم؟<i class="p-2 fas fa-briefcase"></i></p>
-                <hr>
-            </div>
-            <div class="mr-sm-0 pr-sm-0  col-md-6">
-                <div class="w-100 h-100 jumbotron text-right IRANSans" dir="rtl">
-                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها
-                    و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و
-                    کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و
-                    آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه
-                    ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که
-                    تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی
-                    دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
-                </div>
-            </div>
-            <div class="ml-sm-0 pl-sm-0  col-md-6">
-                <img src="{{$generalinfo['24']->value}}" class="w-100 h-100" style="object-fit: cover">
-            </div>
-        </div>
-
-        <div class="row my-5 px-sm-2">
-            <div class="text-center col-md-12 IRANSans text-right">
-                <p class="h5">کیفیت ما ضامن پیشرفت ماست<i class="p-2 fas fa-chart-line"></i></p>
-                <hr>
-            </div>
-            <div class="mx-sm-0 px-sm-0  col-md-6">
-                <script src="https://code.highcharts.com/highcharts.js"></script>
-                <div id="chartcontainer" dir="rtl"></div>
-            </div>
-            <div class="mx-sm-0 px-sm-0  col-md-6 card">
-                <table class="table table-striped  text-center " dir="rtl">
-                    <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">عنوان پروژه</th>
-                        <th scope="col">موضوع</th>
-                        <th scope="col">تاریخ</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>تست</td>
-                        <td>تست</td>
-                        <td>تست</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>تست</td>
-                        <td>تست</td>
-                        <td>تست</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>تست</td>
-                        <td>تست</td>
-                        <td>تست</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>تست</td>
-                        <td>تست</td>
-                        <td>تست</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">5</th>
-                        <td>تست</td>
-                        <td>تست</td>
-                        <td>تست</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">6</th>
-                        <td>تست</td>
-                        <td>تست</td>
-                        <td>تست</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">7</th>
-                        <td>تست</td>
-                        <td>تست</td>
-                        <td>تست</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-
-        <div class="row my-5 d-none d-md-block">
-            <div class="text-center col-md-12 IRANSans text-right">
-                <p class="h5">گالری تصاویر<i class="p-2 far fa-images"></i></p>
-                <hr>
-            </div>
-            <div class="w-100" style="height: 30vh; margin-top: -1em">
-                <fieldset>
-                    <div class="slider">
-                        <input type="radio" name="rSlide" id="rsl-1" class="d-none slider__control" checked/>
-                        <input type="radio" name="rSlide" id="rsl-2" class="d-none slider__control"/>
-                        <input type="radio" name="rSlide" id="rsl-3" class="d-none slider__control"/>
-                        <input type="radio" name="rSlide" id="rsl-4" class="d-none slider__control"/>
-                        <input type="radio" name="rSlide" id="rsl-5" class="d-none slider__control"/>
-                        <ul class="slider__list">
-                            @php $activeclass=1; @endphp
-                            @foreach($allbanner as $singlebanner)
-                                @if($singlebanner->father == "sm_slider")
-                                    <li class="slider__item">
-                                        <label for="rsl-{{$activeclass}}" class="slider__label slider__label-{{$activeclass}}">
-                                            <div class="row fair-hover">
-                                                <div class="col-lg-12 fair-hover-center text-center" dir="rtl">
-                                                    <img src="{{$singlebanner->imgpath}}" title="{{$singlebanner->title}}" alt="{{$singlebanner->title}}" style="width: 100%; height: 25vh; object-fit: cover">
-                                                    <small style="position: relative; z-index: 0">{{$singlebanner->title}}</small>
-                                                </div>
-                                            </div>
-                                        </label>
-                                    </li>
-                                    <?php $activeclass++;?>
-                                @endif
-                            @endforeach
-                        </ul>
-                    </div>
-                </fieldset>
-            </div>
-        </div>
-        <div class="row mb-4 mt-5">
-            <div class="text-center col-md-12 IRANSans text-right">
-                <p class="h5">خدمات قابل ارائه<i class="p-2 fas fa-briefcase"></i></p>
-                <hr>
-            </div>
-            <section id="services" class="text-dark">
-                <div class="row px-md-2">
-                    <div class="col-lg-3 col-sm-6 d-flex justify-content-center pb-3">
-                        <a href="#" style=" text-decoration: none;">
-                            <div class="services">
-                                <div class="service-wrap">
-                                    <i class="fab fa-adn"></i>
-                                    <h3>تست عنوان</h3>
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                        گرافیک است.</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 d-flex justify-content-center pb-3">
-                        <a href="#" style=" text-decoration: none;">
-                            <div class="services">
-                                <div class="service-wrap">
-                                    <i class="fab fa-adn"></i>
-                                    <h3>تست عنوان</h3>
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                        گرافیک است.</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 d-flex justify-content-center pb-3">
-                        <a href="#" style=" text-decoration: none;">
-                            <div class="services">
-                                <div class="service-wrap">
-                                    <i class="fab fa-adn"></i>
-                                    <h3>تست عنوان</h3>
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                        گرافیک است.</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 d-flex justify-content-center pb-3">
-                        <a href="#" style=" text-decoration: none;">
-                            <div class="services">
-                                <div class="service-wrap">
-                                    <i class="fab fa-adn"></i>
-                                    <h3>تست عنوان</h3>
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                        گرافیک است.</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </div>
-            @if(count($allcontentspost))
-                <div class="text-center col-md-12 IRANSans text-right">
-                    <p class="h5">آخرین مطالب<i class="p-2 far fa-newspaper"></i></p>
-                    <hr>
-                </div>
-                <div class="w-100 slickclassselector">
-                    @foreach($allcontentspost as $content)
-                        <div class="slide">
-                            <a class="text-decoration-none text-right text-dark" href="{{route('show_single_sll',['content'=>$content->slug])}}" dir="rtl" style="text-decoration: none">
-                                <img class="rounded img-fluid" src="{{$content->imgpath}}"/>
-                                <h5 class="text-decoration-none text-muted p-3">
-                                {{$content->title}}
-                                </h5>
-                            </a>
+                    <div class="services-icon-hover d-flex flex-column justify-content-center align-items-center m-4">
+                        <div class="services-icon">
+                            <img src="/themeassets/pardesara/img/curtain.png" alt="Services-curtain">
                         </div>
-                    @endforeach
+                        <span class="icon-hover"></span>
+                        <p class="mt-2">پرده سراها</p>
+                    </div>
+                    <div class="services-icon-hover d-flex flex-column justify-content-center align-items-center m-4">
+                        <div class="services-icon">
+                            <img src="/themeassets/pardesara/img/curtain.png" alt="Services-curtain">
+                        </div>
+                        <span class="icon-hover"></span>
+                        <p class="mt-2">پرده سراها</p>
+                    </div>
+                    <div class="services-icon-hover d-flex flex-column justify-content-center align-items-center m-4">
+                        <div class="services-icon">
+                            <img src="/themeassets/pardesara/img/curtain.png" alt="Services-curtain">
+                        </div>
+                        <span class="icon-hover"></span>
+                        <p class="mt-2">پرده سراها</p>
+                    </div>
+                    <div class="services-icon-hover d-flex flex-column justify-content-center align-items-center m-4">
+                        <div class="services-icon">
+                            <img src="/themeassets/pardesara/img/curtain.png" alt="Services-curtain">
+                        </div>
+                        <span class="icon-hover"></span>
+                        <p class="mt-2">پرده سراها</p>
+                    </div>
+                    <div class="services-icon-hover d-flex flex-column justify-content-center align-items-center m-4">
+                        <div class="services-icon">
+                            <img src="/themeassets/pardesara/img/curtain.png" alt="Services-curtain">
+                        </div>
+                        <span class="icon-hover"></span>
+                        <p class="mt-2">پرده سراها</p>
+                    </div>
                 </div>
-            @endif
-        <div class=" my-5 ">
-            <div class="text-center col-md-12 IRANSans text-right">
-                <p class="h5">همکاران/مشتریان ما<i class="p-2 far fa-handshake"></i></p>
-                <hr>
-            </div>
-            <div class="customer-logos">
-                @foreach($allbanner as $singlebanner)
-                    @if($singlebanner->father == "vendor_slider")
-                        <div class="slide"><a href="#"><img src="{{$singlebanner->imgpath}}" alt="{{$singlebanner->title}}"></a></div>
-                    @endif
-                @endforeach
             </div>
         </div>
     </div>
+    <!-- End main content -->
+
+    <!-- Start new ads -->
+    <div class="new-ads d-flex flex-column justify-content-center align-items-center">
+        <h2 class="m-5">جدیدترین آگهی ها</h2>
+        <div class="new-ads-list d-flex flex-row  flex-wrap justify-content-center align-items-center">
+            <div class="new-ads-list-item d-flex flex-column justify-content-center align-items-center">
+                <img src="/themeassets/pardesara/img/ads1.png" alt="ads">
+                <h3 class="m-3">پرده دست دوم نقش برجسته مدل رومی</h3>
+                <p class="m-0">تهران خیابان نیاوران</p>
+                <a href="#" class="text-center py-2 btn-ads-item">مشاهده آگهی</a>
+            </div>
+            <div class="new-ads-list-item d-flex flex-column justify-content-center align-items-center">
+                <img src="/themeassets/pardesara/img/ads1.png" alt="ads">
+                <h3 class="m-3">پرده دست دوم نقش برجسته مدل رومی</h3>
+                <p class="m-0">تهران خیابان نیاوران</p>
+                <a href="#" class="text-center py-2 btn-ads-item">مشاهده آگهی</a>
+            </div>
+            <div class="new-ads-list-item d-flex flex-column justify-content-center align-items-center">
+                <img src="/themeassets/pardesara/img/ads1.png" alt="ads">
+                <h3 class="m-3">پرده دست دوم نقش برجسته مدل رومی</h3>
+                <p class="m-0">تهران خیابان نیاوران</p>
+                <a href="#" class="text-center py-2 btn-ads-item">مشاهده آگهی</a>
+            </div>
+            <div class="new-ads-list-item d-flex flex-column justify-content-center align-items-center">
+                <img src="/themeassets/pardesara/img/ads1.png" alt="ads">
+                <h3 class="m-3">پرده دست دوم نقش برجسته مدل رومی</h3>
+                <p class="m-0">تهران خیابان نیاوران</p>
+                <a href="#" class="text-center py-2 btn-ads-item">مشاهده آگهی</a>
+            </div>
+            <div class="new-ads-list-item d-flex flex-column justify-content-center align-items-center">
+                <img src="/themeassets/pardesara/img/ads1.png" alt="ads">
+                <h3 class="m-3">پرده دست دوم نقش برجسته مدل رومی</h3>
+                <p class="m-0">تهران خیابان نیاوران</p>
+                <a href="#" class="text-center py-2 btn-ads-item">مشاهده آگهی</a>
+            </div>
+            <div class="new-ads-list-item d-flex flex-column justify-content-center align-items-center">
+                <img src="/themeassets/pardesara/img/ads1.png" alt="ads">
+                <h3 class="m-3">پرده دست دوم نقش برجسته مدل رومی</h3>
+                <p class="m-0">تهران خیابان نیاوران</p>
+                <a href="#" class="text-center py-2 btn-ads-item">مشاهده آگهی</a>
+            </div>
+            <div class="new-ads-list-item d-flex flex-column justify-content-center align-items-center">
+                <img src="/themeassets/pardesara/img/ads1.png" alt="ads">
+                <h3 class="m-3">پرده دست دوم نقش برجسته مدل رومی</h3>
+                <p class="m-0">تهران خیابان نیاوران</p>
+                <a href="#" class="text-center py-2 btn-ads-item">مشاهده آگهی</a>
+            </div>
+            <div class="new-ads-list-item d-flex flex-column justify-content-center align-items-center">
+                <img src="/themeassets/pardesara/img/ads1.png" alt="ads">
+                <h3 class="m-3">پرده دست دوم نقش برجسته مدل رومی</h3>
+                <p class="m-0">تهران خیابان نیاوران</p>
+                <a href="#" class="text-center py-2 btn-ads-item">مشاهده آگهی</a>
+            </div>
+
+        </div>
+    </div>
+    <!-- End new ads -->
+
+    <!-- Start Popular store -->
+    <div class="popular-store d-flex flex-column ">
+        <h2 class="m-5 d-flex align-self-center">محبوب ترین فروشگاه ها</h2>
+        <div class="popular-store-list customer-logos slider">
+            <div class="popular-store-list-item slide">
+                <img src="/themeassets/pardesara/img/ads1.png" alt="ads">
+                <h3 class="m-3">پرده دست دوم نقش برجسته مدل رومی</h3>
+                <div class="popular-store-star d-flex flex-row justify-content-center align-items-center">
+                    <p>256 نفر</p>
+                    <div class="d-flex flex-row">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                    </div>
+                </div>
+                <p class="m-0">تهران خیابان نیاوران</p>
+            </div>
+            <div class="popular-store-list-item slide">
+                <img src="/themeassets/pardesara/img/ads1.png" alt="ads">
+                <h3 class="m-3">پرده دست دوم نقش برجسته مدل رومی</h3>
+                <div class="popular-store-star d-flex flex-row justify-content-center align-items-center">
+                    <p>256 نفر</p>
+                    <div class="d-flex flex-row">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                    </div>
+                </div>
+                <p class="m-0">تهران خیابان نیاوران</p>
+            </div>
+            <div class="popular-store-list-item slide">
+                <img src="/themeassets/pardesara/img/ads1.png" alt="ads">
+                <h3 class="m-3">پرده دست دوم نقش برجسته مدل رومی</h3>
+                <div class="popular-store-star d-flex flex-row justify-content-center align-items-center">
+                    <p>256 نفر</p>
+                    <div class="d-flex flex-row">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                    </div>
+                </div>
+                <p class="m-0">تهران خیابان نیاوران</p>
+            </div>
+            <div class="popular-store-list-item slide">
+                <img src="/themeassets/pardesara/img/ads1.png" alt="ads">
+                <h3 class="m-3">پرده دست دوم نقش برجسته مدل رومی</h3>
+                <div class="popular-store-star d-flex flex-row justify-content-center align-items-center">
+                    <p>256 نفر</p>
+                    <div class="d-flex flex-row">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                    </div>
+                </div>
+                <p class="m-0">تهران خیابان نیاوران</p>
+            </div>
+            <div class="popular-store-list-item slide">
+                <img src="/themeassets/pardesara/img/ads1.png" alt="ads">
+                <h3 class="m-3">پرده دست دوم نقش برجسته مدل رومی</h3>
+                <div class="popular-store-star d-flex flex-row justify-content-center align-items-center">
+                    <p>256 نفر</p>
+                    <div class="d-flex flex-row">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                    </div>
+                </div>
+                <p class="m-0">تهران خیابان نیاوران</p>
+            </div>
+            <div class="popular-store-list-item slide">
+                <img src="/themeassets/pardesara/img/ads1.png" alt="ads">
+                <h3 class="m-3">پرده دست دوم نقش برجسته مدل رومی</h3>
+                <div class="popular-store-star d-flex flex-row justify-content-center align-items-center">
+                    <p>256 نفر</p>
+                    <div class="d-flex flex-row">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                    </div>
+                </div>
+                <p class="m-0">تهران خیابان نیاوران</p>
+            </div>
+            <div class="popular-store-list-item slide">
+                <img src="/themeassets/pardesara/img/ads1.png" alt="ads">
+                <h3 class="m-3">پرده دست دوم نقش برجسته مدل رومی</h3>
+                <div class="popular-store-star d-flex flex-row justify-content-center align-items-center">
+                    <p>256 نفر</p>
+                    <div class="d-flex flex-row">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                    </div>
+                </div>
+                <p class="m-0">تهران خیابان نیاوران</p>
+            </div>
+            <div class="popular-store-list-item slide">
+                <img src="/themeassets/pardesara/img/ads1.png" alt="ads">
+                <h3 class="m-3">پرده دست دوم نقش برجسته مدل رومی</h3>
+                <div class="popular-store-star d-flex flex-row justify-content-center align-items-center">
+                    <p>256 نفر</p>
+                    <div class="d-flex flex-row">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                        <img src="/themeassets/pardesara/img/star.png" alt="star">
+                    </div>
+                </div>
+                <p class="m-0">تهران خیابان نیاوران</p>
+            </div>
+
+        </div>
+    </div>
+    <!-- End Popular store -->
+
+    <!-- Start Help -->
+    <div class="py-5 help d-flex flex-column justify-content-center align-items-center">
+        <img src="/themeassets/pardesara/img/help.png" alt="backgrund">
+        <br>
+        <h3 class="text-light pt-5 mt-5">راهنمای خرید، آسان و سریع ۳ مرحله‌ای</h3>
+        <div class="help-card d-flex flex-row w-100 flex-wrap justify-content-center">
+            <div class="m-0 mx-lg-4 help-card-item d-flex flex-column justify-content-center align-items-center m-1">
+                <span></span>
+                <div class="help-card-item-icon d-flex justify-content-center align-items-center"><img src="/themeassets/pardesara/img/website.png" alt="help"></div>
+                <h3>آگهی را انتخاب کن</h3>
+                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+            </div>
+            <div class="m-0 mx-lg-4  help-card-item d-flex flex-column justify-content-center align-items-center m-1">
+                <span></span>
+                <div class="help-card-item-icon d-flex justify-content-center align-items-center"><img src="/themeassets/pardesara/img/website.png" alt="help"></div>
+                <h3>آگهی را انتخاب کن</h3>
+                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+            </div>
+            <div class="m-0 mx-lg-4  help-card-item d-flex flex-column justify-content-center align-items-center m-1">
+                <span></span>
+                <div class="help-card-item-icon d-flex justify-content-center align-items-center"><img src="/themeassets/pardesara/img/website.png" alt="help"></div>
+                <h3>آگهی را انتخاب کن</h3>
+                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+            </div>
+        </div>
+    </div>
+    <!-- End Help -->
+
+    <!-- Start Insert ad -->
+    <div class="insert-ad d-flex flex-column justify-content-center align-items-center">
+        <div class="d-none d-sm-block">
+            <div class="d-none d-sm-block insert-ad-back d-flex flex-row flex-wrap">
+                <div class="d-flex flex-row flex-wrap ">
+                    <div class="insert-ad-back-icon-1 services-icon-hover d-flex flex-column justify-content-center align-items-center">
+                        <div class="services-icon">
+                            <img src="/themeassets/pardesara/img/curtain.png" alt="Services-curtain">
+                        </div>
+                        <span class="icon-hover"></span>
+                    </div>
+                    <div class="insert-ad-back-icon-2 services-icon-hover d-flex flex-column justify-content-center align-items-center">
+                        <div class="services-icon">
+                            <img src="/themeassets/pardesara/img/curtain.png" alt="Services-curtain">
+                        </div>
+                        <span class="icon-hover"></span>
+                    </div>
+                    <div class="insert-ad-back-icon-3 services-icon-hover d-flex flex-column justify-content-center align-items-center">
+                        <div class="services-icon">
+                            <img src="/themeassets/pardesara/img/curtain.png" alt="Services-curtain">
+                        </div>
+                        <span class="icon-hover"></span>
+                    </div>
+                    <div class="insert-ad-back-icon-4 services-icon-hover d-flex flex-column justify-content-center align-items-center">
+                        <div class="services-icon">
+                            <img src="/themeassets/pardesara/img/curtain.png" alt="Services-curtain">
+                        </div>
+                        <span class="icon-hover"></span>
+                    </div>
+                    <div class="insert-ad-back-icon-5 services-icon-hover d-flex flex-column justify-content-center align-items-center">
+                        <div class="services-icon">
+                            <img src="/themeassets/pardesara/img/curtain.png" alt="Services-curtain">
+                        </div>
+                        <span class="icon-hover"></span>
+                    </div>
+                    <div class="insert-ad-back-icon-6 services-icon-hover d-flex flex-column justify-content-center align-items-center">
+                        <div class="services-icon">
+                            <img src="/themeassets/pardesara/img/curtain.png" alt="Services-curtain">
+                        </div>
+                        <span class="icon-hover"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="insert-ad-content d-flex flex-column justify-content-center align-items-center">
+            <h2>با ثبت خدمات خود در پرده سرا به صورت انلاین سفارش بگیرید</h2>
+            <a href="/login" class="btn-insert-ad btn text-light text-center py-3">ثبت آگهی<img src="/themeassets/pardesara/img/plus.png" alt="plus"></a>
+        </div>
+
+    </div>
+    <!-- End Insert ad -->
 @endsection

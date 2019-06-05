@@ -52,187 +52,58 @@
 @endif
 <!-- Styles -->
     <link href="{{ asset('defaultassets/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('themeassets/blue-formal/css/theme.css') }}" rel="stylesheet">
     <link href="{{ asset('defaultassets/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('themeassets/pardesara/css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('themeassets/pardesara/css/slider.css') }}" rel="stylesheet">
+
 </head>
-<body>
-<div id="app">
-    @if(count($errors))
-        <div class="container">
-            <div class="row d-flex justify-content-center">
-                <div class="col-md-4">
-                    <div class="alert alert-danger text-right IRANSans" role="alert">
-                        @foreach($errors->all() as $error)
-                            <strong>{{ $error }}</strong> - <br>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endif
-
-
-    <div class="container-fluid">
-        <nav class="navbar navbar-expand-sm  navbar-light IRANSans " DIR="rtl">
-            <a class="navbar-brand" href="/">
-                <img src="{{$generalinfo['5']->value}}" HEIGHT="40px">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <hr class="d-block d-sm-none">
-                <ul class="mr-sm-5 navbar-nav justify-content-center align-items-center align-content-center">
-                    <li class="d-none nav-item">
-                        <a class="nav-link font-weight-bold" href="{{route('show_archive_all')}}">آرشیو مطالب</a>
-                    </li>
-                    @if(isset($allmenucontents))
-                        @foreach($allmenucontents as $menucontent)
-                            <li class="nav-item">
-                                <a class="px-sm-3 nav-link font-weight-bold"
-                                   href="{{route('show_single_sll',['content'=>$menucontent->slug])}}">{{$menucontent->title}}</a>
-                            </li>
-                        @endforeach
-                    @endif
-                </ul>
-                <span class=" GilasUserSet px-4">
-                    @if(Auth::check())
-                        <button>
-                            خوش آمدید
-                            @if(Auth::user()->name != 'none')
-                                <strong>{{ Auth::user()->name }}</strong>
-                            @else
-                                <strong>{{ 'کاربر' }}</strong>
-                            @endif
-                            <i class="ion-arrow-down-b"></i>
-                        </button>
-                        <div class="list text-center">
-                            <a href="/user">پنل کاربری</a>
-                            <a href="{{ route('logout') }}"
-                               onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                خروج
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                  style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
-                        </div>
-                    @else
-                        <a class="btn btn-brandColor" href="/register">عضویت</a>
-                        <a class="btn btn-brandColor" href="/login">ورود</a>
-                    @endif
-                </span>
-                <hr class="d-block d-sm-none">
-                <div class="d-block d-sm-none ">
-                    <form class="pb-3 pb-sm-0 form-inline d-flex justify-content-center mr-sm-4" action="{{route('show_search_all')}}" method="post">
-                        {{ csrf_field() }}
-                        <div class="row w-100">
-                            <input class="col-7 form-control " name="key" type="text" placeholder="جستجو...">
-                            <button class="col-5 btn btn-success" type="submit">جستجو</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <div class="d-none d-sm-block ">
-                <form class="pb-3 pb-sm-0 form-inline d-flex justify-content-center mr-sm-4" action="{{route('show_search_all')}}" method="post">
-                    {{ csrf_field() }}
-                    <div class="row w-100">
-                        <input class="col-7 form-control " name="key" type="text" placeholder="جستجو...">
-                        <button class="col-5 btn btn-success" type="submit">جستجو</button>
-                    </div>
-                </form>
-            </div>
-        </nav>
-    </div>
-
-    @yield('content')
-
-    <div class="container-fluid sec-footer">
-        <div class="row">
-            <div class="col-12 sin">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="card desc-box">
-                                <div class="card-body">
-                                    <div class="card-title">ارتباط با ما</div>
-                                    <div class="card-text">
-                                        <div class="row">
-                                            <div class="col">
-                                                <i class="fas fa-phone my-3 ml-3"></i>
-                                                <a class="text-decoration-none text-light" href="tel:{{$generalinfo[9]->value}}"><span>{{$generalinfo[9]->value}}</span></a>
-                                            </div><!--.col-->
-                                        </div><!--.row-->
-                                        <div class="row">
-                                            <div class="col">
-                                                <i class="fas fa-map-marker my-3 ml-3"></i>
-                                                <a target="_blank"  class="text-decoration-none text-light" href="https://www.google.com/maps/search/{{$generalinfo[7]->value}}"><span>{{$generalinfo[7]->value}}</span></a>
-                                            </div><!--.col-->
-                                        </div><!--.row-->
-                                        <div class="row">
-                                            <div class="col">
-                                                <i class="fas fa-envelope-open my-3 ml-3"></i>
-                                                <a class="text-decoration-none text-light" href="mailto:{{$generalinfo[3]->value}}"><span>{{$generalinfo[3]->value}}</span></a>
-                                            </div><!--.col-->
-                                        </div><!--.row-->
-                                    </div><!--.card-text-->
-                                </div>
-                            </div><!--.card-->
-                        </div><!--.col-->
-
-                        <div class="col-lg-4 text-center d-flex justify-content-center flex-column">
-                            <i>
-                                <img style="filter:invert(100%); max-height: 120px;" src="{{$generalinfo[5]->value}}" alt="Image">
-                            </i>
-                            <br>
-                            <div class="pb-3">
-                                @if(strlen($generalinfo[17]->value)>8 )
-                                    <a  href="{{$generalinfo[17]->value}}" class="snip1472"><i class="fab fa-linkedin-in"></i></a>
-                                @endif
-
-                                @if(strlen($generalinfo[15]->value)>8)
-                                    <a href="{{$generalinfo[15]->value}}" class="snip1472"><i class="fab fa-instagram"></i></a>
-                                @endif
-
-                                @if(strlen($generalinfo[16]->value)>8)
-                                    <a href="{{$generalinfo[16]->value}}" class="snip1472"><i class="fab fa-telegram-plane"></i></a>
-                                @endif
-                            </div>
-                        </div><!--.col-->
-                        <div class="col-lg-4">
-                            <div class="card desc-box">
-                                <div class="card-body">
-                                    <div class="card-title">درباره ما</div>
-                                    <div class="card-text" dir="rtl">
-                                        <h1 class="h6 d-inline">{{$generalinfo[0]->value}}</h1> - {{$generalinfo[1]->value}}
-                                        <br>
-                                        کلمات کلیدی:
-                                        {{$generalinfo[2]->value}}
-                                    </div>
-                                </div>
-                            </div><!--.card-->
-                        </div><!--.col-->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- footer - start -->
-    <footer class="py-3 text-center container-fluid bg-dark-dark">
-        <a href="http://gilas-web.ir" ><img height="20px" src="https://iranflood.ir/wp-content/themes/Gilas-Eventpro/img/gilas_logo_footer.png"></a>
-    </footer>
-    <!-- footer - end -->
+<body class="d-felx m-0 p-0 container-fluid">
+<!-- Start alert top -->
+<div class="alert-top w-100 m-0 d-flex justify-content-center">
+    <p>
+       آیا می خواهید آگهی خود را در پورتال بانک پرده ثبت کنید؟
+        <a href="/login" class="text-decoration-none text-light btn">برای شروع اینجا کلیک کنید</a>
+    </p>
 </div>
-<!-- Scripts -->
-<script src="{{ asset('defaultassets/js/jquery-3.2.1.min.js') }}"></script>
-<script src="{{ asset('defaultassets/js/slick.js') }}"></script>
-<script src="{{ asset('defaultassets/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('defaultassets/js/persianumber.min.js') }}"></script>
-<script src="{{ asset('defaultassets/js/popper.js') }}"></script>
-<script src="{{ asset('defaultassets/js/app.js') }}"></script>
-<script src="{{ asset('themeassets/blue-formal/js/theme.js') }}"></script>
+<!-- End alert top -->
+
+@yield('content')
+
+<!-- Start footer -->
+<footer>
+    <div class="footer d-flex flex-wrap flex-row-reverse justify-content-center align-items-center pb-4">
+        <div class="mx-sm-3 links d-flex flex-column justify-content-center align-items-center">
+            <h4>پرده سرا</h4>
+            <a class="m-3" href="#">درباره پرده سرا</a>
+            <a class="m-3" href="#">قوانین و مقررات</a>
+            <a class="m-3" href="#">تماس با ما</a>
+            <a class="m-3" href="#">سوالات متداول</a>
+        </div>
+        <div class="mx-sm-3 about d-flex flex-column justify-content-center align-items-center">
+            <h4 class="m-3">حس خوب سفارش و تحویل آنلاین پرده</h4>
+            <p class="m-3">
+                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
+            </p>
+        </div>
+        <div class="mx-sm-3 symbol">
+            <div class="d-flex flex-row justify-content-center align-items-center">
+                <a class="m-2" href="#"><img width="300px" src="/themeassets/pardesara/img/nemad.png" alt="nemad"></a>
+            </div>
+            <div class="symbol-icon d-flex flex-row justify-content-center align-items-center">
+                <div class="d-flex justify-content-center align-items-center m-2"><a href="#"><img src="/themeassets/pardesara/img/facebook.png" alt="facebook"></a></div>
+                <div class="d-flex justify-content-center align-items-center m-2"><a href="#"><span></span><img src="/themeassets/pardesara/img/twitter.png" alt="twitter"></a></div>
+                <div class="d-flex justify-content-center align-items-center m-2"><a href="#"><span></span><img src="/themeassets/pardesara/img/instagram.png" alt="instagram"></a></div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End footer -->
+
+<script src="/themeassets/pardesara/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/themeassets/pardesara/js/popper.min.js"></script>
+<script src="/themeassets/pardesara/js/bootstrap.min.js"></script>
+<script src="/themeassets/pardesara/js/slick.js"></script>
+<script src="/themeassets/pardesara/js/slider.js"></script>
 </body>
 </html>
 <!--
