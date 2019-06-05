@@ -23,8 +23,8 @@ class Gilasweb_UserController extends Controller
     {
         $this->middleware('auth');
         $this->generalinfo = generalinfo::where('status', 'active')->get();
-        //$this->base_path= base_path('../public_html'); //online host
-        $this->base_path= base_path('public'); //local host
+        $this->base_path= base_path('../public_html'); //online host
+        //$this->base_path= base_path('public'); //local host
     }
 
     public function index()
@@ -74,7 +74,35 @@ class Gilasweb_UserController extends Controller
             );
             $user->phone = fl_clean($request->phone);
         }
-
+        if (Auth::user()->coname != $request->coname) {
+            Validator::make($request_array, [
+                    'coname' => 'required|string',
+                ]
+            );
+            $user->coname = fl_clean($request->coname);
+        }
+        if (Auth::user()->cocat != $request->cocat) {
+            Validator::make($request_array, [
+                    'cocat' => 'required|string',
+                ]
+            );
+            $user->cocat = fl_clean($request->cocat);
+        }
+        if (Auth::user()->cocrative != $request->cocrative) {
+            Validator::make($request_array, [
+                    'cocrative' => 'required|string',
+                ]
+            );
+            $user->cocrative = fl_clean($request->cocrative);
+        }
+        if (Auth::user()->coabout != $request->coabout) {
+            Validator::make($request_array, [
+                    'coabout' => 'required|string',
+                ]
+            );
+            $user->coabout = fl_clean($request->coabout);
+        }
+        
         if($request->hasFile('userpic')) {
             $user->imgpath =file_handle(Input::file('userpic'),"---", '/uploads/userpic', $this->base_path);
         }

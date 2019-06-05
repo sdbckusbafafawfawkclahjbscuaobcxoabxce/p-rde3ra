@@ -99,7 +99,7 @@ class PhoneController extends Controller
                 if($form->username !== null){
                     $user->name=$form->username;
                     $user->save();
-                    post_req('https://www.resanchat.ir/rest/register', "phone=".$form->phone."&name=".$form->username);
+                    post_req('http://www.rscu.ir/rest/register', "phone=".$form->phone."&name=".$form->username);
                 }
                 Auth::login($user);
                 return Redirect(asset('/levelcheck'));

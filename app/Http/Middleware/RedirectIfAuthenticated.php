@@ -18,7 +18,7 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect('https://lab.resanchat.ir/user');
+            return redirect('/user');
         }
         $plink=url()->previous();
         if(strpos($plink,'user') != false){

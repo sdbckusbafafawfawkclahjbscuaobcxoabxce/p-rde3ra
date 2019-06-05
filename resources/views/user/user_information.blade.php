@@ -56,8 +56,48 @@
                         <span class="text-danger mt-2 mb-0 d-block">{{ $errors->first('email') }}</span>
                     @endif
 </div>
-<div class="col-sm-12 border-top ">
-<div class="row d-flex justify-content-center mt-2">
+                    <div class="col-sm-4">
+                        <label for="coname" class="control-label">نام شرکت:</label>
+                        <input placeholder="نام شرکت" id="email" type="text" class="mb-2 form-control" name="coname" value="{{ Auth::user()->coname }}"
+                               required>
+
+                        @if ($errors->has('coname'))
+                            <span class="text-danger mt-2 mb-0 d-block">{{ $errors->first('coname') }}</span>
+                        @endif
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="cocat" class="control-label">حوزه فعالیت:</label>
+                        <input placeholder="حوزه فعایت" id="cocat" type="text" class="mb-2 form-control" name="cocat" value="{{ Auth::user()->cocat }}"
+                               required>
+
+                        @if ($errors->has('cocat'))
+                            <span class="text-danger mt-2 mb-0 d-block">{{ $errors->first('cocat') }}</span>
+                        @endif
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="cocrative" class="control-label">دانش بنیان:</label>
+                        <select class="form-control" name="cocrative">
+                            @if(Auth::user()->cocrative != null)
+                            <option value="{{ Auth::user()->cocrative }}">{{ Auth::user()->cocrative }}</option>
+                            @endif
+                            <option value="{{null}}">خیر</option>
+                            <option value="خلاق">خلاق</option>
+                            <option value="دانش بنیان">دانش بنیان</option>
+                                <option value="دانش بنیان و خلاق"> دانش بنیان و خلاق</option>
+                        </select>
+
+                        @if ($errors->has('cocrative'))
+                            <span class="text-danger mt-2 mb-0 d-block">{{ $errors->first('crative') }}</span>
+                        @endif
+                    </div>
+
+                    <div class="col-sm-12">
+                        <label for="coabout">درباره شرکت(حداقل 3 سطر)</label>
+                        <input value="{{Auth::user()->coabout}}" id="coabout"
+                               name="coabout" dir="rtl">
+                    </div>
+                    <div class="col-sm-12 border-top ">
+                    <div class="row d-flex justify-content-center mt-2">
                     <div class="col-sm-4">
                         <button type="submit" class="btn btn-sm btn-success btn-lg w-100 "> ثبت اطلاعات </button>
                     </div>
@@ -68,4 +108,61 @@
             </div>
         </div>
     </main>
+    {{--editor--}}
+    <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+    {{--/editor license remover--}}
+    <script>
+        tinymce.init({
+            selector: '#coabout',
+            //force_br_newlines : true,
+            //force_p_newlines : false,
+            plugins: "tabfocus  wordcount fullscreen textcolor preview" +
+                " colorpicker image imagetools advlist  link table searchreplace lists charmap  insertdatetime advlist autolink " +
+                "  directionality emoticons " +
+                "",
+
+
+            toolbar: "tabfocus wordcount fullscreen preview forecolor  backcolor image  " +
+                "link table undo redo styleselect bold italic alignleft aligncenter" +
+                " alignright bullist numlist outdent indent code searchreplace insertdatetime ltr rtl" +
+                " emoticons sizeselect | bold italic | fontselect |  fontsizeselect charmap",
+
+
+            //image_caption: true,
+            //image_advtab: true,
+            min_height: 400,
+            images_upload_url: "{{route('contents/img/upload')}}",
+            images_upload_base_path: "{{asset('uploads/contents')}}",
+            images_upload_credentials: true,
+            relative_urls: false, //for change base link
+
+            document_base_url: "{{asset('uploads/contents')}}/",
+            images_upload_handler: function (blobInfo, success, failure) {
+                var xhr, formData;
+                xhr = new XMLHttpRequest();
+                xhr.withCredentials = false;
+                xhr.open('POST', "{{route('contents/img/upload')}}");
+                xhr.onload = function () {
+                    var json;
+
+                    if (xhr.status != 200) {
+                        failure('HTTP Error: ' + xhr.responseText);
+                        return;
+                    }
+                    json = JSON.parse(xhr.responseText);
+
+                    if (!json || typeof json.location != 'string') {
+                        failure('Invalid JSON: ' + xhr);
+                        return;
+                    }
+                    //json.location="/img/eajaxupload/"+json.location;
+                    success("/uploads/contents/"+json.location);
+                    console.log(json);
+                };
+                formData = new FormData();
+                formData.append('file', blobInfo.blob(), blobInfo.filename());
+                xhr.send(formData);
+            }
+        });
+    </script>
 @endsection

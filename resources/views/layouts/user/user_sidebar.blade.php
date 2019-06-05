@@ -5,6 +5,7 @@
 * Time: 4:00 AM
 */ --}}
 
+
 <div class="col-lg-3 p-1  order-lg-first">
 <div class="rounded background-2 pt-1 px-2 text-light">
     <div class="my-1 px-1 d-flex justify-content-between">
@@ -31,20 +32,22 @@
             <span class="h2">{{Auth::user()->credit}}</span>
             <hr class="bg-light">
         </div>
-        <li class="nav-item btn">
-            <a class="text-light nav-link active d-flex" href="/user">
-                <i class="pl-1 fas fa-tachometer-alt"></i>
-                داشبورد
-            </a>
-        </li>
         <ul class="nav flex-column  pr-0 mr-0">
-            @if(admin_access(Auth::user()->status,Auth::user()->phone))
-                <li class="nav-item  btn">
-                    <a class="text-light nav-link d-flex" href="/admin">
-                        <i class="pl-1 fas fa-angle-left"></i>
-                        مشاهده مدیریت
-                    </a>
-                </li>
+            @if(admin_access(['09163151967','09161145220'],Auth::user()->status,Auth::user()->phone,null))
+            <li class="nav-item  btn">
+                <a class="text-light nav-link d-flex" href="/admin">
+                    <i class="pl-1 fas fa-angle-left"></i>
+                    مشاهده مدیریت
+                </a>
+            </li>
+            @endif
+            @if(Auth::user()->coabout != NULL)
+            <li class="nav-item  btn">
+                <a class="text-light nav-link d-flex" href="{{route('userpage',[Auth::user()->id])}}">
+                    <i class="pl-1 fas fa-angle-left"></i>
+                    مشاهده صفحه
+                </a>
+            </li>
             @endif
             <li class="nav-item  btn">
                 <a class="text-light nav-link d-flex" href="{{route('show_user_information')}}">
@@ -67,7 +70,6 @@
             </li>
         </ul>
     <hr class="bg-light">
-
     <div class="m-1 pb-3 d-flex justify-content-center pb-1">
         <a class="btn btn-sm btn-warning " href="/home">
             برگشت به خانه

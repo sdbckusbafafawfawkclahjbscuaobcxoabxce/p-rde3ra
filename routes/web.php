@@ -13,6 +13,7 @@
 //public
 Route::get('/', 'Gilasweb_HomeController@index')->name('home');
 Route::get('/home', 'Gilasweb_HomeController@index')->name('home');
+Route::get('/roshd/{userid}', 'Gilasweb_HomeController@show_userpage')->name('userpage');
 
 //before login
 Auth::routes();
@@ -31,8 +32,8 @@ Route::get( '/contents/pst/{post_type_id}','Gilasweb_ContentController@archive_a
 Route::get( '/contents/{content}','Gilasweb_ContentController@single_sll')->name('show_single_sll');
 
 //user
-Route::get( '/user','User\Gilasweb_UserController@index');
-Route::get( '/user/','User\Gilasweb_UserController@index');
+Route::get( '/user','User\Gilasweb_UserController@show_information');
+Route::get( '/user/','User\Gilasweb_UserController@show_information');
 Route::get( '/user/information','User\Gilasweb_UserController@show_information')->name('show_user_information');
 Route::post( '/user/information','User\Gilasweb_UserController@action_information')->name('action_user_information');
 Route::get( '/user/changepassword','User\Gilasweb_UserController@show_changepassword')->name('show_user_changepassword');

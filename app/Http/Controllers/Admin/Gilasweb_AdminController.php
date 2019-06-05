@@ -29,8 +29,8 @@ class Gilasweb_AdminController extends Controller
     {
         $this->middleware('auth');
         $this->x='0';
-        //$this->base_path= base_path('../public_html'); //online host
-        $this->base_path= base_path('public'); //local host
+        $this->base_path= base_path('../public_html'); //online host
+        //$this->base_path= base_path('public'); //local host
         $this->mail_path= base_path('../mail');
         $this->core_path= base_path();
         $this->generalinfo = generalinfo::whereNotIn('status',['deleted'])->orderBy('id', 'asc')->get();

@@ -3,7 +3,7 @@
 
 //access
 //user_access((isset($userinfo->status))?$userinfo->status:'active');
-//admin_access(['09163151967',],(isset($userinfo->status))?$userinfo->status:'active',(isset($userinfo->phone))?$userinfo->phone:null);
+//admin_access(['09163151967',],$userinfo->status,$userinfo->phone);
 //exit("<center style='width: 100%; height: 100%; display: flex; align-items: center; justify-content: center'><h1 style='color:red'>سامانه در حال آپدیت می باشد</h1></center>");
 
 //SSl Control
@@ -37,8 +37,8 @@ if (json_decode(file_get_contents("http://ipinfo.io/".GetRealIp()))->country != 
 */
 //////////////////////////////////////////////////////////////////////////////////////// Programer Control
 
-function admin_access($status,$phone,$check = NULL){
-    if($status != "active" || !in_array($phone,['09163151967'])){
+function admin_access($admins,$status,$phone,$check = NULL){
+    if($status != "active" || !in_array($phone,$admins)){
         if(!isset($check) || $check == 0 || $check == NULL) {
             return false;
         }
@@ -329,7 +329,7 @@ function fl_en2fa_num($xe) {
 function get_gilasweb_message($mtype){
     $gilaswebmessage["img"]="https://www.gilasweb.ir/img/Gilas_Logo.jpg ";
     $gilaswebmessage["text_head"]="تشکر از اعتماد شما";
-    $gilaswebmessage["text_body"]="به سیستم مدیریت جی ال اف تیم نرم افزاری گیلاس خوش آمدید، امیدواریم حس خوب مدیریت کامل پورتال خود را بتوانید تجربه کنید؛ ما نیز ضمن حمایت و پشتیبانی شما به مرور در تلاش برای بهبود و ارتقا فنی پنل خواهیم بود:)";
+    $gilaswebmessage["text_body"]="به سیستم مدیریت جی ال 5 تیم نرم افزاری گیلاس خوش آمدید، امیدواریم حس خوب مدیریت کامل پورتال خود را بتوانید تجربه کنید؛ ما نیز ضمن حمایت و پشتیبانی شما به مرور در تلاش برای بهبود و ارتقا فنی پنل خواهیم بود:)";
     $gilaswebmessage["action"]=" <br> <br>  ";
     return $gilaswebmessage[$mtype];
 }
